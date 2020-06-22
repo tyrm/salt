@@ -1,3 +1,3 @@
 ---
 include:
-  - profiles.software.docecot
+  - profiles.software.dovecot
