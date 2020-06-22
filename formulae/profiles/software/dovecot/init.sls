@@ -16,3 +16,5 @@ dovecot:
     - source: salt://profiles/software/dovecot/files/dovecot-sql.conf.ext.j2
     - template: jinja
     - user: root
+    - watch_in:
+      - service: dovecot
