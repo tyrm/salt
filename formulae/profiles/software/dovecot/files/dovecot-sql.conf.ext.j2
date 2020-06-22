@@ -86,7 +86,11 @@ connect = host={{ pillar['dovecot']['sql']['hostname'] }} dbname={{ salt['pillar
 # List of supported schemes is in
 # http://wiki2.dovecot.org/Authentication/PasswordSchemes
 #
+{% if salt['pillar.get']('dovecot:sql:default_pass_scheme', False) -%}
+default_pass_scheme = {{ pillar['dovecot']['sql']['default_pass_scheme'] }}
+{%- else -%}
 #default_pass_scheme = MD5
+{%- endif %}
 
 # passdb query to retrieve the password. It can return fields:
 #   password - The user's password. This field must be returned.
