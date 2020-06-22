@@ -12,6 +12,6 @@ dovecot:
     username: mail
 
 postgresql:
-  listen_addresses: *
+  listen_addresses: '*'
   ssl_cert_file: /etc/letsencrypt/live/pup.haus/fullchain.pem
   ssl_key_file: /etc/letsencrypt/live/pup.haus/privkey.pem
