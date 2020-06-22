@@ -7,4 +7,3 @@ vmail:
     - uid: 500
   group.present:
     - gid: 500
-    - shell: /usr/sbin/nologin
