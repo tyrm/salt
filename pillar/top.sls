@@ -1,5 +1,5 @@
 ---
 base:
   'backyard.pup.haus':
+    - groups.mailserver
     - hosts.backyard
-    - secure.backyard
