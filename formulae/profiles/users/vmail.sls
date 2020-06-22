@@ -2,6 +2,6 @@
 vmail:
   user.present:
     - gid: 500
-    - shell: /sbin/nologin
+    - shell: /usr/sbin/nologin
     - system: True
     - uid: 500
