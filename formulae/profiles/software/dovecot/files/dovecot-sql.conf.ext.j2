@@ -32,7 +32,7 @@
 {% if salt['pillar.get']('dovecot:sql:driver', False) -%}
 #driver =
 {%- else -%}
-driver = {{ pillar['dovecot']['sql']['driver'] }}
+driver = {{ salt['pillar.get']('dovecot:sql:driver', '') }}
 {%- endif %}
 
 
