@@ -29,7 +29,7 @@
 # );
 
 # Database driver: mysql, pgsql, sqlite
-{% salt['pillar.get']('dovecot:sql:driver', False) -%}
+{% if salt['pillar.get']('dovecot:sql:driver', False) -%}
 #driver =
 {%- else -%}
 driver = {{ pillar['dovecot']['sql']['driver'] }}
