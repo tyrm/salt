@@ -30,11 +30,10 @@
 
 # Database driver: mysql, pgsql, sqlite
 {% if salt['pillar.get']('dovecot:sql:driver', False) -%}
-#driver =
+driver = {{ pillar['dovecot']['sql']['driver'] }}
 {%- else -%}
-driver = {{ salt['pillar.get']('dovecot:sql:driver', '') }}
+#driver =
 {%- endif %}
-
 
 # Database connection string. This is driver-specific setting.
 #
