@@ -75,7 +75,11 @@ driver = {{ pillar['dovecot']['sql']['driver'] }}
 #   connect = host=sql.example.com dbname=virtual user=virtual password=blarg
 #   connect = /etc/dovecot/authdb.sqlite
 #
+{% if salt['pillar.get']('dovecot:sql:hostname', False) -%}
+connect = host={{ pillar['dovecot']['sql']['hostname'] }} dbname={{ salt['pillar.get']('dovecot:sql:dbname', 'mail') }} user={{ salt['pillar.get']('dovecot:sql:user', 'mail') }} password={{ pillar['dovecot']['sql']['password'] }}
+{%- else -%}
 #connect =
+{%- endif %}
 
 # Default password scheme.
 #
