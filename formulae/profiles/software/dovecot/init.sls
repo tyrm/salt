@@ -1,5 +1,7 @@
 ---
 dovecot:
-  pkg.installed
+  pkg.installed:
+    - pkgs:
+      - dovecot
   service.running:
     - enable: True
