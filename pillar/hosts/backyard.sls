@@ -1,1 +1,3 @@
 ---
+postgresql:
+  listen_addresses: '*'
