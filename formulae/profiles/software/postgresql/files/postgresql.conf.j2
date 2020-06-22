@@ -56,10 +56,14 @@ external_pid_file = '/var/run/postgresql/12-main.pid'			# write an extra PID fil
 
 # - Connection Settings -
 
+{% if salt['pillar.get']('postgresql:listen_addresses', False) -%}
+listen_addresses = '{{ pillar['postgresql']['listen_addresses'] }}'
+{%- else -%}
 #listen_addresses = 'localhost'		# what IP address(es) to listen on;
 					# comma-separated list of addresses;
 					# defaults to 'localhost'; use '*' for all
 					# (change requires restart)
+{%- endif %}
 port = 5432				# (change requires restart)
 max_connections = 100			# (change requires restart)
 #superuser_reserved_connections = 3	# (change requires restart)
@@ -99,9 +103,17 @@ unix_socket_directories = '/var/run/postgresql'	# comma-separated list of direct
 
 ssl = on
 #ssl_ca_file = ''
+{% if salt['pillar.get']('postgresql:ssl_cert_file', False) -%}
+ssl_cert_file = '{{ pillar['postgresql']['ssl_cert_file'] }}'
+{%- else -%}
 ssl_cert_file = '/etc/ssl/certs/ssl-cert-snakeoil.pem'
+{%- endif %}
 #ssl_crl_file = ''
+{% if salt['pillar.get']('postgresql:ssl_key_file', False) -%}
+ssl_key_file = '{{ pillar['postgresql']['ssl_key_file'] }}'
+{%- else -%}
 ssl_key_file = '/etc/ssl/private/ssl-cert-snakeoil.key'
+{%- endif %}
 #ssl_ciphers = 'HIGH:MEDIUM:+3DES:!aNULL' # allowed SSL ciphers
 #ssl_prefer_server_ciphers = on
 #ssl_ecdh_curve = 'prime256v1'
