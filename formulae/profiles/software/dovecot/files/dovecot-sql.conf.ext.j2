@@ -119,9 +119,13 @@ default_pass_scheme = {{ pillar['dovecot']['sql']['default_pass_scheme'] }}
 #   password_query = SELECT userid AS user, pw AS password \
 #     FROM users WHERE userid = '%u' AND active = 'Y'
 #
+{% if salt['pillar.get']('dovecot:sql:password_query', False) -%}
+password_query = {{ pillar['dovecot']['sql']['password_query'] }}
+{%- else -%}
 #password_query = \
 #  SELECT username, domain, password \
 #  FROM users WHERE username = '%n' AND domain = '%d'
+{%- endif %}
 
 # userdb query to retrieve the user information. It can return fields:
 #   uid - System UID (overrides mail_uid setting)
@@ -139,9 +143,13 @@ default_pass_scheme = {{ pillar['dovecot']['sql']['default_pass_scheme'] }}
 #   user_query = SELECT dir AS home, user AS uid, group AS gid FROM users where userid = '%u'
 #   user_query = SELECT home, 501 AS uid, 501 AS gid FROM users WHERE userid = '%u'
 #
+{% if salt['pillar.get']('dovecot:sql:user_query', False) -%}
+user_query = {{ pillar['dovecot']['sql']['user_query'] }}
+{%- else -%}
 #user_query = \
 #  SELECT home, uid, gid \
 #  FROM users WHERE username = '%n' AND domain = '%d'
+{%- endif %}
 
 # If you wish to avoid two SQL lookups (passdb + userdb), you can use
 # userdb prefetch instead of userdb sql in dovecot.conf. In that case you'll
