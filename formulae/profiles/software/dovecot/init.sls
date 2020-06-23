@@ -15,5 +15,31 @@ dovecot:
     - source: salt://profiles/software/dovecot/files/dovecot-sql.conf.ext.j2
     - template: jinja
     - user: root
+    - require:
+      - pkg: dovecot
+    - watch_in:
+      - service: dovecot
+
+/etc/dovecot/conf.d/10-auth.conf:
+  file.managed:
+    - group: root
+    - mode: 644
+    - source: salt://profiles/software/dovecot/files/10-auth.conf.j2
+    - template: jinja
+    - user: root
+    - require:
+      - pkg: dovecot
+    - watch_in:
+      - service: dovecot
+
+/etc/dovecot/conf.d/10-ssl.conf:
+  file.managed:
+    - group: root
+    - mode: 644
+    - source: salt://profiles/software/dovecot/files/10-ssl.conf.j2
+    - template: jinja
+    - user: root
+    - require:
+      - pkg: dovecot
     - watch_in:
       - service: dovecot
