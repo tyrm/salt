@@ -3,6 +3,9 @@ dovecot:
   auth:
     user_database: sql
   lmtpd:
+    protocol:
+      hostname: backyard.pup.haus
+      postmaster_address: postmaster@pup.haus
     service:
       unix_listeners:
         - path: /var/spool/postfix/private/dovecot-lmtp
