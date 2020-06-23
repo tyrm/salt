@@ -8,6 +8,14 @@ dovecot:
     - watch:
       - pkg: dovecot
 
+openssl dhparam -out /etc/dovecot/dh.pem 4096:
+  cmd.run:
+    - creates: /etc/dovecot/dh.pem
+    - require:
+      - pkg: dovecot
+    - watch_in:
+      - service: dovecot
+
 /etc/dovecot/dovecot-sql.conf.ext:
   file.managed:
     - group: dovecot
