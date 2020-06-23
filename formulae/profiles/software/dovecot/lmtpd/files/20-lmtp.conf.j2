@@ -34,7 +34,7 @@ service lmtp {
     mode = {{ service.mode }}
     user = {{ service.user }}
     }
-    {% endfor -%}
+    {%- endfor -%}
   {%- endif %}
 }
 {%- endif -%}
