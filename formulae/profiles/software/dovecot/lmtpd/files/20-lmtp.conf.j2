@@ -24,3 +24,17 @@ protocol lmtp {
   # Space separated list of plugins to load (default is global mail_plugins).
   #mail_plugins = $mail_plugins
 }
+
+{% if salt['pillar.get']('dovecot:lmtpd:service', False) -%}
+service lmtp {
+  {%- if salt['pillar.get']('dovecot:lmtpd:service:unix_listener', False) -%}
+    {%- for service in pillar['dovecot']['lmtpd']['services']['unix_listener'] %}
+    unix_listener {{ service.path }} {
+    group = {{ service.group }}
+    mode = {{ service.mode }}
+    user = {{ service.user }}
+    }
+    {% endfor -%}
+  {%- endif %}
+}
+{%- endif %}
