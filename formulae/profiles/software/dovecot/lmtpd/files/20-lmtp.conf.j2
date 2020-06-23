@@ -28,7 +28,7 @@ protocol lmtp {
 {% if salt['pillar.get']('dovecot:lmtpd:service', False) -%}
 service lmtp {
   {%- if salt['pillar.get']('dovecot:lmtpd:service:unix_listeners', False) -%}
-    {%- for service in pillar['dovecot']['lmtpd']['services']['unix_listeners'] %}
+    {%- for service in pillar['dovecot']['lmtpd']['service']['unix_listeners'] %}
     unix_listener {{ service.path }} {
     group = {{ service.group }}
     mode = {{ service.mode }}
