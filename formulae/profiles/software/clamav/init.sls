@@ -4,7 +4,7 @@ clamav:
     - pkgs:
       - clamav
 
-clamd:
+clamav-freshclam:
   service.running:
     - enable: True
     - watch:
