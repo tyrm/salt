@@ -10,6 +10,5 @@ postfix:
       - user: vmail
   service.running:
     - enable: True
-    - reload: True
     - watch:
       - pkg: postfix

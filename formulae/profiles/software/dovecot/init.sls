@@ -5,7 +5,6 @@ dovecot:
       - dovecot-core
   service.running:
     - enable: True
-    - reload: True
     - watch:
       - pkg: dovecot
 
