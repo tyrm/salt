@@ -20,26 +20,17 @@ dovecot:
     - watch_in:
       - service: dovecot
 
-/etc/dovecot/conf.d/10-auth.conf:
+{% set confs = ['10-auth.conf', '10-ssl.conf'] %}
+{% for conf in confs %}
+/etc/dovecot/conf.d/{{ conf }}:
   file.managed:
     - group: root
     - mode: 644
-    - source: salt://profiles/software/dovecot/files/10-auth.conf.j2
+    - source: salt://profiles/software/dovecot/files/{{ conf }}.j2
     - template: jinja
     - user: root
     - require:
       - pkg: dovecot
     - watch_in:
       - service: dovecot
-
-/etc/dovecot/conf.d/10-ssl.conf:
-  file.managed:
-    - group: root
-    - mode: 644
-    - source: salt://profiles/software/dovecot/files/10-ssl.conf.j2
-    - template: jinja
-    - user: root
-    - require:
-      - pkg: dovecot
-    - watch_in:
-      - service: dovecot
+{% endfor %}
