@@ -1,7 +1,7 @@
 ---
-dovecot-lmtpd:
+dovecot-imapd:
   pkg.installed:
     - pkgs:
-      - dovecot-lmtpd
+      - dovecot-imapd
     - watch_in:
       - service: dovecot
