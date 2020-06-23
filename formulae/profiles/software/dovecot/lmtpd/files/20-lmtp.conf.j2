@@ -23,6 +23,12 @@
 protocol lmtp {
   # Space separated list of plugins to load (default is global mail_plugins).
   #mail_plugins = $mail_plugins
+  {% if salt['pillar.get']('dovecot:lmtpd:protocol:postmaster_address', False) -%}
+  postmaster_address = {{ pillar['dovecot']['lmtpd']['protocol']['postmaster_address'] }}
+  {%- endif %}
+  {% if salt['pillar.get']('dovecot:lmtpd:protocol:hostname', False) -%}
+  hostname = {{ pillar['dovecot']['lmtpd']['protocol']['hostname'] }}
+  {%- endif %}
 }
 
 {% if salt['pillar.get']('dovecot:lmtpd:service', False) -%}
