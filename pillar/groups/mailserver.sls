@@ -1,5 +1,7 @@
 ---
 dovecot:
+  auth:
+    user_database: sql
   sql:
     dbname: mail
     default_pass_scheme: SHA512
