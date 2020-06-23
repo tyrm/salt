@@ -1,6 +1,7 @@
 ---
 include:
   - profiles.postgresql.mailserver
+  - profiles.software.clamav
   - profiles.software.dovecot
   - profiles.software.dovecot.imapd
   - profiles.software.dovecot.lmtpd
