@@ -2,6 +2,13 @@
 dovecot:
   auth:
     user_database: sql
+  lmtpd:
+    service:
+      unix_listeners:
+        - path: /var/spool/postfix/private/dovecot-lmtp
+          group: postfix
+          mode: 0600
+          user: postfix
   sql:
     dbname: mail
     default_pass_scheme: SHA512
