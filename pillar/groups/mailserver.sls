@@ -20,7 +20,7 @@ dovecot:
     password_query: >
       SELECT username, domain, password FROM users WHERE username = '%n' AND domain = '%d'
     user_query: >
-      SELECT 'maildir:/var/lib/mailboxes/'||maildir as mail, '/var/lib/mailboxes/'||maildir as home, 500 as uid, 500 as gid FROM users WHERE username = '%n' AND domain = '%d'
+      SELECT 'maildir:/var/lib/mailboxes/'||id as mail, '/var/lib/mailboxes/'||id as home, 500 as uid, 500 as gid FROM users WHERE username = '%n' AND domain = '%d'
     username: mail
   ssl:
     ssl_dh: /etc/dovecot/dh.pem

@@ -4,7 +4,6 @@ dovecot:
     ssl_cert: /etc/letsencrypt/live/pup.haus/fullchain.pem
     ssl_key: /etc/letsencrypt/live/pup.haus/privkey.pem
 
-
 postgresql:
   hba_extra_lines: |
       host all all all md5
