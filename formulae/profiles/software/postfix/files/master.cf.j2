@@ -40,7 +40,7 @@ submission inet n       -       y       -       -       smtpd
 #  -o smtpd_recipient_restrictions=
 #  -o smtpd_relay_restrictions=permit_sasl_authenticated,reject
 #  -o milter_macro_daemon_name=ORIGINATING
-{%- endif -%}
+{%- endif %}
 {%- if salt['pillar.get']('postfix:enable_smtps', False) %}
 smtps     inet  n       -       y       -       -       smtpd
   -o syslog_name=postfix/smtps
@@ -65,7 +65,7 @@ smtps     inet  n       -       y       -       -       smtpd
 #  -o smtpd_recipient_restrictions=
 #  -o smtpd_relay_restrictions=permit_sasl_authenticated,reject
 #  -o milter_macro_daemon_name=ORIGINATING
-{%- endif -%}
+{%- endif %}
 #628       inet  n       -       y       -       -       qmqpd
 pickup    unix  n       -       y       60      1       pickup
 cleanup   unix  n       -       y       -       0       cleanup
