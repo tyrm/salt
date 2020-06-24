@@ -3,6 +3,7 @@ clamav:
   pkg.installed:
     - pkgs:
       - clamav
+      - clamav-daemon
 
 clamav-freshclam:
   service.running:
