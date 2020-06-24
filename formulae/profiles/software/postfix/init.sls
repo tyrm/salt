@@ -28,7 +28,7 @@ postfix:
       - service: postfix
 {% endfor %}
 
-{% for key, pgconf in salt['pillar.get']('postfix:pgconfs', {}) %}
+{% for key, pgconf in salt['pillar.get']('postfix:pgconfs', {}).items() %}
 /etc/postfix/pgsql-{{ key }}.cf:
   file.managed:
     - context:
