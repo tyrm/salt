@@ -66,3 +66,7 @@ postfix:
   smtpd_tls_session_cache_database: "btree:${data_directory}/smtpd_scache"
   smtpd_tls_security_level: encrypt
   smtpd_use_tls: "yes"
+
+rspamd:
+  mailter_headers: >
+    extended_spam_headers = true;

@@ -20,6 +20,6 @@ rspamd:
   file.absent:
 {% endif %}
     - require:
-      - pkg: postfix
+      - pkg: rspamd
     - watch_in:
-      - service: postfix
+      - service: rspamd
