@@ -47,7 +47,7 @@ postfix:
       hosts: {{ dbhost }}
       user: {{ dbuser }}
       dbname: {{ dbname }}
-      query: SELECT forw_addr FROM mxaliases WHERE alias='%s'
+      query: SELECT b.username||'@'||b.domain as email FROM mxaliases a INNER JOIN mxboxes b ON a.mxbox_id = b.id WHERE a.alias = '%s';
     boxes:
       hosts: {{ dbhost }}
       user: {{ dbuser }}
