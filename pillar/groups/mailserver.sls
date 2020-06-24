@@ -71,5 +71,13 @@ postfix:
   smtpd_use_tls: "yes"
 
 rspamd:
+  antivirus: >
+    clamav {
+     attachments_only = false;
+     symbol = "CLAM_VIRUS";
+     type = "clamav";
+     action = "reject";
+     servers = "/var/run/clamav/clamd.ctl";
+    }
   mailter_headers: >
     extended_spam_headers = true;
