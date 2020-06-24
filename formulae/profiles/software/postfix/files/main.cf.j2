@@ -716,6 +716,9 @@ debugger_command =
 inet_protocols = ipv4
 
 # SMTP CONFIGURATION
+{%- if salt['pillar.get']('postfix:smtp_tls_security_level', False) %}
+smtp_tls_security_level = {{ pillar['postfix']['smtp_tls_security_level'] }}
+{%- endif %}
 {%- if salt['pillar.get']('postfix:smtp_tls_session_cache_database', False) %}
 smtp_tls_session_cache_database = {{ pillar['postfix']['smtp_tls_session_cache_database'] }}
 {%- endif %}
