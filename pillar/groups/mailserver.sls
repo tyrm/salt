@@ -34,6 +34,8 @@ dovecot:
 
 postfix:
   alias_maps: "proxy:pgsql:/etc/postfix/pgsql-aliases.cf"
+  enable_smtps: true
+  enable_submission: true
   inet_interfaces: all
   local_recipient_maps: "proxy:pgsql:/etc/postfix/pgsql-boxes.cf $alias_maps"
   mailbox_transport: "lmtp:unix:private/dovecot-lmtp"
