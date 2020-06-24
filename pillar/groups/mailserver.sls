@@ -28,3 +28,26 @@ dovecot:
     username: mail
   ssl:
     ssl_dh: /etc/dovecot/dh.pem
+
+postfix:
+  myhostname: backyard.pup.haus
+  mydomain: pup.haus
+  myorigin: mydomain
+  inet_interfaces: all
+  mydestination: $myhostname, localhost.$mydomain, localhost, $mydomain
+
+
+  alias_maps: proxy:pgsql:/etc/postfix/pgsql-aliases.cf
+  local_recipient_maps: proxy:pgsql:/etc/postfix/pgsql-boxes.cf $alias_maps
+  mailbox_transport: lmtp:unix:private/dovecot-lmtp
+
+  smtpd_tls_cert_file: /etc/letsencrypt/live/pup.haus/fullchain.pem
+  smtpd_tls_key_file: /etc/letsencrypt/live/pup.haus/privkey.pem
+  smtpd_use_tls: yes
+  smtpd_tls_session_cache_database: btree:${data_directory}/smtpd_scache
+  smtp_tls_session_cache_database: btree:${data_directory}/smtp_scache
+  smtpd_tls_security_level: encrypt
+  smtpd_tls_protocols: !SSLv2, !SSLv3
+  smtpd_sasl_auth_enable: yes
+  smtpd_sasl_path: private/auth
+  smtpd_sasl_type: dovecot
