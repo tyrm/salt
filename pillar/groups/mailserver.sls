@@ -44,8 +44,8 @@ postfix:
   smtpd_tls_cert_file: /etc/letsencrypt/live/pup.haus/fullchain.pem
   smtpd_tls_key_file: /etc/letsencrypt/live/pup.haus/privkey.pem
   smtpd_use_tls: yes
-  smtpd_tls_session_cache_database: btree:${data_directory}/smtpd_scache
-  smtp_tls_session_cache_database: btree:${data_directory}/smtp_scache
+  smtpd_tls_session_cache_database: "btree:${data_directory}/smtpd_scache"
+  smtp_tls_session_cache_database: "btree:${data_directory}/smtp_scache"
   smtpd_tls_security_level: encrypt
   smtpd_tls_protocols: "!SSLv2, !SSLv3"
   smtpd_sasl_auth_enable: yes
