@@ -732,7 +732,6 @@ smtp_sasl_mechanism_filter = {{ pillar['postfix']['smtp_sasl_mechanism_filter'] 
 smtp_sasl_security_options = {{ pillar['postfix']['smtp_sasl_security_options'] }}
 {%- endif %}
 
-
 # SMTPD CONFIGURATION
 {%- if salt['pillar.get']('postfix:smtpd_tls_cert_file', False) %}
 smtpd_tls_cert_file = {{ pillar['postfix']['smtpd_tls_cert_file'] }}

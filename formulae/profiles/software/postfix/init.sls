@@ -27,3 +27,19 @@ postfix:
     - watch_in:
       - service: postfix
 {% endfor %}
+
+{% set pgconfs = salt['pillar.get']('postfix:pgconfs', []) %}
+{% for pgconf in pgconfs %}
+/etc/postfix/pgsql-{{ pgconf.name }}.cf:
+  file.managed:
+    - context: pgconf
+    - group: root
+    - mode: 644
+    - source: salt://profiles/software/postfix/files/pgsql.cf.j2
+    - template: jinja
+    - user: root
+    - require:
+      - pkg: postfix
+    - watch_in:
+      - service: postfix
+{% endfor %}
