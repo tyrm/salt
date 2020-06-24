@@ -1,6 +1,10 @@
 ---
 dovecot:
   auth:
+    service:
+      unix_listeners:
+        - path: /var/spool/postfix/private/auth
+          mode: 0666
     user_database: sql
   lmtpd:
     protocol:

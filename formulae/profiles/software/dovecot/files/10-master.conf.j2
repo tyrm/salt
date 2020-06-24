@@ -103,13 +103,11 @@ service auth {
     #group =
   }
 
-{%- if salt['pillar.get']('dovecot:service:auth:unix_listeners', False) -%}
-  {%- for service in pillar['dovecot']['service']['auth']['unix_listeners'] %}
+{%- if salt['pillar.get']('dovecot:auth:service:unix_listeners', False) -%}
+  {%- for service in pillar['dovecot']['auth']['service']['unix_listeners'] %}
   unix_listener {{ service.path }} {
   if
-    group = {{ service.group }}
     mode = {{ service.mode }}
-    user = {{ service.user }}
   }
   {%- endfor -%}
 {%- else %}
