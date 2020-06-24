@@ -7,7 +7,7 @@ dovecot:
     service:
       unix_listeners:
         - path: /var/spool/postfix/private/auth
-          mode: 0666
+          mode: "0666"
     user_database: sql
   lmtpd:
     protocol:
@@ -17,7 +17,7 @@ dovecot:
       unix_listeners:
         - path: /var/spool/postfix/private/dovecot-lmtp
           group: postfix
-          mode: 0600
+          mode: "0600"
           user: postfix
   sql:
     dbname: {{ dbname }}
