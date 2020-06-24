@@ -39,8 +39,8 @@ postfix:
 
   alias_maps: "proxy:pgsql:/etc/postfix/pgsql-aliases.cf"
   local_recipient_maps: "proxy:pgsql:/etc/postfix/pgsql-boxes.cf $alias_maps"
-  mailbox_transport: "lmtp:unix:private/dovecot-lmtp
-"
+  mailbox_transport: "lmtp:unix:private/dovecot-lmtp"
+  
   smtpd_tls_cert_file: /etc/letsencrypt/live/pup.haus/fullchain.pem
   smtpd_tls_key_file: /etc/letsencrypt/live/pup.haus/privkey.pem
   smtpd_use_tls: yes
