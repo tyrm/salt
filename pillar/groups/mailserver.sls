@@ -54,7 +54,7 @@ postfix:
       dbname: {{ dbname }}
       query: SELECT username||'@'||domain as email FROM mxboxes WHERE username = '%n' AND domain = '%d'
   smtp_tls_session_cache_database: "btree:${data_directory}/smtp_scache"
-  smtpd_sasl_auth_enable: yes
+  smtpd_sasl_auth_enable: "yes"
   smtpd_sasl_path: private/auth
   smtpd_sasl_type: dovecot
   smtpd_tls_cert_file: /etc/letsencrypt/live/pup.haus/fullchain.pem
@@ -62,4 +62,4 @@ postfix:
   smtpd_tls_protocols: "!SSLv2, !SSLv3"
   smtpd_tls_session_cache_database: "btree:${data_directory}/smtpd_scache"
   smtpd_tls_security_level: encrypt
-  smtpd_use_tls: yes
+  smtpd_use_tls: "yes"
