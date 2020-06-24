@@ -13,7 +13,7 @@ postfix:
     - watch:
       - pkg: postfix
 
-{% set confs = ['main.cf'] %}
+{% set confs = ['main.cf', 'master.cf'] %}
 {% for conf in confs %}
 /etc/postfix/{{ conf }}:
   file.managed:
