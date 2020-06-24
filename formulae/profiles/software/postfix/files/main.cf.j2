@@ -733,6 +733,9 @@ smtp_sasl_security_options = {{ pillar['postfix']['smtp_sasl_security_options'] 
 {%- endif %}
 
 # SMTPD CONFIGURATION
+{%- if salt['pillar.get']('postfix:smtpd_milters', False) %}
+smtpd_milters = {{ pillar['postfix']['smtpd_milters'] }}
+{%- endif %}
 {%- if salt['pillar.get']('postfix:smtpd_tls_cert_file', False) %}
 smtpd_tls_cert_file = {{ pillar['postfix']['smtpd_tls_cert_file'] }}
 {%- endif %}
@@ -759,4 +762,12 @@ smtpd_sasl_path = {{ pillar['postfix']['smtpd_sasl_path'] }}
 {%- endif %}
 {%- if salt['pillar.get']('postfix:smtpd_sasl_type', False) %}
 smtpd_sasl_type = {{ pillar['postfix']['smtpd_sasl_type'] }}
+{%- endif %}
+
+# MILTER CONFIGURATION
+{%- if salt['pillar.get']('postfix:milter_mail_macros', False) %}
+milter_mail_macros = {{ pillar['postfix']['milter_mail_macros'] }}
+{%- endif %}
+{%- if salt['pillar.get']('postfix:non_smtpd_milters', False) %}
+non_smtpd_milters = {{ pillar['postfix']['non_smtpd_milters'] }}
 {%- endif %}

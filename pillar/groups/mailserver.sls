@@ -37,11 +37,13 @@ postfix:
   inet_interfaces: all
   local_recipient_maps: "proxy:pgsql:/etc/postfix/pgsql-boxes.cf $alias_maps"
   mailbox_transport: "lmtp:unix:private/dovecot-lmtp"
+  milter_mail_macros: i {mail_addr} {client_addr} {client_name} {auth_authen}
   mydestination: $myhostname, localhost.$mydomain, localhost, $mydomain
   mydomain: pup.haus
   myhostname: backyard.pup.haus
   mynetworks: "127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128"
   myorigin: $mydomain
+  non_smtpd_milters: "inet:127.0.0.1:11332"
   pgconfs:
     aliases:
       hosts: {{ dbhost }}
@@ -54,6 +56,7 @@ postfix:
       dbname: {{ dbname }}
       query: SELECT username||'@'||domain as email FROM mxboxes WHERE username = '%u' AND domain = '%d'
   smtp_tls_session_cache_database: "btree:${data_directory}/smtp_scache"
+  smtpd_milters: "inet:127.0.0.1:11332"
   smtpd_sasl_auth_enable: "yes"
   smtpd_sasl_path: private/auth
   smtpd_sasl_type: dovecot
