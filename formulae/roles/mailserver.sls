@@ -9,6 +9,7 @@ include:
   - profiles.software.postfix
   - profiles.software.postfix.pgsql
   - profiles.software.postgresql
+  - profiles.software.rspamd
   - profiles.users.vmail
 
 /var/lib/mailboxes:
