@@ -27,7 +27,7 @@ dovecot:
     password_query: >
       SELECT username, domain, password FROM users WHERE username = '%n' AND domain = '%d'
     user_query: >
-      SELECT 'maildir:/var/lib/mailboxes/'||id as mail, '/var/lib/mailboxes/'||id as home, 500 as uid, 500 as gid FROM users WHERE username = '%n' AND domain = '%d'
+      SELECT 'maildir:/var/lib/mailboxes/'||id as mail, '/var/lib/mailboxes/'||id as home, 500 as uid, 500 as gid FROM mxboxes WHERE username = '%n' AND domain = '%d'
     username: {{ dbuser }}
   ssl:
     ssl_dh: /etc/dovecot/dh.pem
@@ -44,11 +44,15 @@ postfix:
   myorigin: $mydomain
   pgconfs:
     aliases:
-      name: aliases
       hosts: {{ dbhost }}
       user: {{ dbuser }}
       dbname: {{ dbname }}
       query: SELECT forw_addr FROM mxaliases WHERE alias='%s'
+    boxes:
+      hosts: {{ dbhost }}
+      user: {{ dbuser }}
+      dbname: {{ dbname }}
+      query: SELECT username||'@'||domain as email FROM mxboxes WHERE username = '%n' AND domain = '%d'
   smtp_tls_session_cache_database: "btree:${data_directory}/smtp_scache"
   smtpd_sasl_auth_enable: yes
   smtpd_sasl_path: private/auth
