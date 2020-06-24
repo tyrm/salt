@@ -52,7 +52,7 @@ postfix:
       hosts: {{ dbhost }}
       user: {{ dbuser }}
       dbname: {{ dbname }}
-      query: SELECT username||'@'||domain as email FROM mxboxes WHERE username = '%n' AND domain = '%d'
+      query: SELECT email FROM vw_mxboxes WHERE username = '%n' AND domain = '%d'
   smtp_tls_session_cache_database: "btree:${data_directory}/smtp_scache"
   smtpd_sasl_auth_enable: "yes"
   smtpd_sasl_path: private/auth
