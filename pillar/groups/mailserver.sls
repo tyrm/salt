@@ -25,7 +25,7 @@ dovecot:
     driver: pgsql
     hostname: {{ dbhost }}
     password_query: >
-      SELECT username, domain, password FROM users WHERE username = '%n' AND domain = '%d'
+      SELECT username, domain, password FROM mxboxes WHERE username = '%n' AND domain = '%d'
     user_query: >
       SELECT 'maildir:/var/lib/mailboxes/'||id as mail, '/var/lib/mailboxes/'||id as home, 500 as uid, 500 as gid FROM mxboxes WHERE username = '%n' AND domain = '%d'
     username: {{ dbuser }}
