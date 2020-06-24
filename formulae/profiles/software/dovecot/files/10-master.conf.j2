@@ -106,7 +106,6 @@ service auth {
 {% if salt['pillar.get']('dovecot:auth:service:unix_listeners', False) -%}
   {%- for service in pillar['dovecot']['auth']['service']['unix_listeners'] %}
   unix_listener {{ service.path }} {
-  if
     mode = {{ service.mode }}
   }
   {%- endfor -%}
