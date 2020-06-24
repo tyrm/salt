@@ -5,6 +5,8 @@ postfix-pgsql:
       - postfix-pgsql
     - require:
       - pkg: postfix
+    - watch_in:
+      - service: postfix
 
 {% for key, pgconf in salt['pillar.get']('postfix:pgconfs', {}).items() %}
 /etc/postfix/pgsql-{{ key }}.cf:
