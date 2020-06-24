@@ -7,6 +7,7 @@ include:
   - profiles.software.dovecot.lmtpd
   - profiles.software.dovecot.pgsql
   - profiles.software.postfix
+  - profiles.software.postfix.pgsql
   - profiles.software.postgresql
   - profiles.users.vmail
 
