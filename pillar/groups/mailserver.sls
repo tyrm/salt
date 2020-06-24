@@ -22,3 +22,5 @@ dovecot:
     user_query: >
       SELECT 'maildir:/var/lib/mailboxes/'||maildir as mail, '/var/lib/mailboxes/'||maildir as home, 500 as uid, 500 as gid FROM users WHERE username = '%n' AND domain = '%d'
     username: mail
+  ssl:
+    ssl_dh: /etc/dovecot/dh.pem
