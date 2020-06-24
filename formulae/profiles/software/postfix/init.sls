@@ -28,11 +28,15 @@ postfix:
       - service: postfix
 {% endfor %}
 
-{% set pgconfs = salt['pillar.get']('postfix:pgconfs', []) %}
-{% for pgconf in pgconfs %}
-/etc/postfix/pgsql-{{ pgconf.name }}.cf:
+{% for key, pgconf in salt['pillar.get']('postfix:pgconfs', []) %}
+/etc/postfix/pgsql-{{ key }}.cf:
   file.managed:
-    - context: pgconf
+    - context:
+        hosts: {{ pgconf.hosts }}
+        user: {{ pgconf.user }}
+        password: {{ pgconf.password }}
+        dbname: {{ pgconf.dbname }}
+        query: {{ pgconf.query }}
     - group: root
     - mode: 644
     - source: salt://profiles/software/postfix/files/pgsql.cf.j2
