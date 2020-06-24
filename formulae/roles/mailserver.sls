@@ -8,3 +8,9 @@ include:
   - profiles.software.dovecot.pgsql
   - profiles.software.postfix
   - profiles.software.postgresql
+  - profiles.users.vmail
+
+/var/lib/mailboxes:
+  file.directory:
+    - user: vmail
+    - group: vmail
