@@ -719,7 +719,7 @@ inet_protocols = ipv4
 {%- if salt['pillar.get']('postfix:smtp_tls_session_cache_database', False) %}
 smtp_tls_session_cache_database = {{ pillar['postfix']['smtp_tls_session_cache_database'] }}
 {%- endif %}
-{%- if salt['pillar.get']('postfix:smtp_tls_session_cache_database', False) %}
+{%- if salt['pillar.get']('postfix:smtp_sasl_password_maps', False) %}
 smtp_sasl_password_maps = {{ pillar['postfix']['smtp_sasl_password_maps'] }}
 {%- endif %}
 {%- if salt['pillar.get']('postfix:smtp_sasl_auth_enable', False) %}
