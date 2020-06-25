@@ -11,8 +11,7 @@ dovecot:
     user_database: sql
   lmtpd:
     protocol:
-      hostname: backyard.pup.haus
-      postmaster_address: postmaster@pup.haus
+      mail_plugins: $mail_plugins sieve
     service:
       unix_listeners:
         - path: /var/spool/postfix/private/dovecot-lmtp
@@ -41,8 +40,6 @@ postfix:
   mailbox_transport: "lmtp:unix:private/dovecot-lmtp"
   milter_mail_macros: i {mail_addr} {client_addr} {client_name} {auth_authen}
   mydestination: $myhostname, localhost.$mydomain, localhost, $mydomain
-  mydomain: pup.haus
-  myhostname: backyard.pup.haus
   mynetworks: "127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128"
   myorigin: $mydomain
   non_smtpd_milters: "inet:127.0.0.1:11332"
@@ -63,8 +60,6 @@ postfix:
   smtpd_sasl_auth_enable: "yes"
   smtpd_sasl_path: private/auth
   smtpd_sasl_type: dovecot
-  smtpd_tls_cert_file: /etc/letsencrypt/live/pup.haus/fullchain.pem
-  smtpd_tls_key_file: /etc/letsencrypt/live/pup.haus/privkey.pem
   smtpd_tls_protocols: "!SSLv2, !SSLv3"
   smtpd_tls_session_cache_database: "btree:${data_directory}/smtpd_scache"
   smtpd_tls_security_level: encrypt
