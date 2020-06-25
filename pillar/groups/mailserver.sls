@@ -4,6 +4,7 @@
 {% set dbuser = 'mail '%}
 dovecot:
   auth:
+    auth_mechanisms: plain login
     service:
       unix_listeners:
         - path: /var/spool/postfix/private/auth
