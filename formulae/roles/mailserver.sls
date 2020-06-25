@@ -5,6 +5,7 @@ include:
   - profiles.software.dovecot
   - profiles.software.dovecot.imapd
   - profiles.software.dovecot.lmtpd
+  - profiles.software.dovecot.managesieved
   - profiles.software.dovecot.pgsql
   - profiles.software.dovecot.sieve
   - profiles.software.dovecot.solr
