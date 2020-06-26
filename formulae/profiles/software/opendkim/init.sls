@@ -60,7 +60,7 @@ opendkim:
 /etc/opendkim/keys:
   file.directory:
     - group: opendkim
-    - mode: 640
+    - mode: 750
     - user: opendkim
     - require:
       - file: /etc/opendkim
@@ -69,7 +69,7 @@ opendkim:
 /etc/opendkim/keys/{{ key }}:
   file.directory:
     - group: opendkim
-    - mode: 640
+    - mode: 750
     - user: opendkim
     - require:
       - file: /etc/opendkim/keys
