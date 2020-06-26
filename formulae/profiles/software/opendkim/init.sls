@@ -79,6 +79,7 @@ opendkim-genkey -s {{ conf.domainkey }} -d {{ key }}:
     - creates:
       - /etc/opendkim/keys/{{ key }}/{{ conf.domainkey }}
     - cwd: /etc/opendkim/keys/{{ key }}
+    - runas: opendkim
     - require:
       - file: /etc/opendkim/keys/{{ key }}
     - watch_in:
