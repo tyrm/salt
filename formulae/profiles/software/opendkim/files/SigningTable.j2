@@ -1,0 +1,3 @@
+{%- for key, conf in salt['pillar.get']('opendkim:domains', {}).items() %}
+*@{{ key }} {{ conf.domainkey }}._domainkey.{{ key }}
+{%- endfor -%}

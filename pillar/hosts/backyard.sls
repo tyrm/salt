@@ -8,6 +8,11 @@ dovecot:
     ssl_cert: /etc/letsencrypt/live/pup.haus/fullchain.pem
     ssl_key: /etc/letsencrypt/live/pup.haus/privkey.pem
 
+opendkim:
+  domains:
+    pup.haus:
+      domainkey: 20200626
+
 postfix:
   mydestination: $myhostname, localhost.$mydomain, localhost, $mydomain, faery.pub
   mydomain: pup.haus
