@@ -56,3 +56,31 @@ opendkim:
       - pkg: opendkim
     - watch_in:
       - service: opendkim
+
+/etc/opendkim/keys:
+  file.directory:
+    - group: opendkim
+    - mode: 640
+    - user: opendkim
+    - require:
+      - file: /etc/opendkim
+
+{%- for key, conf in salt['pillar.get']('opendkim:domains', {}).items() %}
+/etc/opendkim/keys/{{ key }}:
+  file.directory:
+    - group: opendkim
+    - mode: 640
+    - user: opendkim
+    - require:
+      - file: /etc/opendkim/keys
+
+opendkim-genkey -s {{ conf.domainkey }} -d {{ key }}:
+  cmd.run:
+    - creates:
+      - /etc/opendkim/keys/{{ key }}/{{ conf.domainkey }}
+    - cwd: /etc/opendkim/keys/{{ key }}
+    - require:
+      - file: /etc/opendkim/keys/{{ key }}
+    - watch_in:
+      - service: opendkim
+{%- endfor -%}
