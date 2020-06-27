@@ -9,8 +9,8 @@ RUNDIR=/run/opendkim
 # Uncomment to specify an alternate socket
 # Note that setting this will override any Socket value in opendkim.conf
 # default:
-{% if salt['pillar.get']('dkim:socket', False) -%}
-SOCKET={{ pillar['dkim']['socket'] }}
+{% if salt['pillar.get']('opendkim:socket', False) -%}
+SOCKET={{ pillar['opendkim']['socket'] }}
 {%- else -%}
 SOCKET=local:$RUNDIR/opendkim.sock
 {%- endif %}
