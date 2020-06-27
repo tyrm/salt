@@ -18,4 +18,8 @@ SignatureAlgorithm      rsa-sha256
 
 UserID                  opendkim:opendkim
 
+{% if salt['pillar.get']('dkim:socket', False) -%}
+Socket                  {{ pillar['dkim']['socket'] }}
+{%- else -%}
 Socket                  local:/run/opendkim/opendkim.sock
+{%- endif %}

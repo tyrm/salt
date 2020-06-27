@@ -57,6 +57,16 @@ opendkim:
     - watch_in:
       - service: opendkim
 
+/etc/default/opendkim:
+  file.managed:
+    - mode: 644
+    - source: salt://profiles/software/opendkim/files/default.j2
+    - template: jinja
+    - require:
+      - pkg: opendkim
+    - watch_in:
+      - service: opendkim
+
 /etc/opendkim/keys:
   file.directory:
     - group: opendkim

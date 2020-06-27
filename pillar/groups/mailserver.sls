@@ -32,6 +32,9 @@ dovecot:
   ssl:
     ssl_dh: /etc/dovecot/dh.pem
 
+opendkim:
+  socket: local:/var/spool/postfix/private/opendkim.sock
+
 postfix:
   alias_maps: "proxy:pgsql:/etc/postfix/pgsql-aliases.cf"
   enable_smtps: true
@@ -43,7 +46,7 @@ postfix:
   mydestination: $myhostname, localhost.$mydomain, localhost, $mydomain
   mynetworks: "127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128"
   myorigin: $mydomain
-  non_smtpd_milters: "inet:127.0.0.1:11332, unix:/run/opendkim/opendkim.sock"
+  non_smtpd_milters: "inet:127.0.0.1:11332, inet:private/opendkim.sock"
   pgconfs:
     aliases:
       hosts: {{ dbhost }}
@@ -57,7 +60,7 @@ postfix:
       query: SELECT username||'@'||domain as email FROM mxboxes WHERE username = '%u' AND domain = '%d'
   smtp_tls_security_level: may
   smtp_tls_session_cache_database: "btree:${data_directory}/smtp_scache"
-  smtpd_milters: "inet:127.0.0.1:11332, unix:/run/opendkim/opendkim.sock"
+  smtpd_milters: "inet:127.0.0.1:11332, unix:private/opendkim.sock"
   smtpd_sasl_auth_enable: "yes"
   smtpd_sasl_path: private/auth
   smtpd_sasl_type: dovecot

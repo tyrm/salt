@@ -1,3 +1,3 @@
 {%- for key, conf in salt['pillar.get']('opendkim:domains', {}).items() %}
-{{ conf.domainkey }}._domainkey.{{ key }} {{ key }}:{{ conf.domainkey }}:/etc/opendkim/keys/example.com/{{ conf.domainkey }}.private
+{{ conf.domainkey }}._domainkey.{{ key }} {{ key }}:{{ conf.domainkey }}:/etc/opendkim/keys/{{ key }}/{{ conf.domainkey }}.private
 {%- endfor -%}
