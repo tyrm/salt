@@ -768,8 +768,14 @@ smtpd_sasl_type = {{ pillar['postfix']['smtpd_sasl_type'] }}
 {%- endif %}
 
 # MILTER CONFIGURATION
+{%- if salt['pillar.get']('postfix:milter_default_action', False) %}
+milter_default_action = {{ pillar['postfix']['milter_default_action'] }}
+{%- endif %}
 {%- if salt['pillar.get']('postfix:milter_mail_macros', False) %}
 milter_mail_macros = {{ pillar['postfix']['milter_mail_macros'] }}
+{%- endif %}
+{%- if salt['pillar.get']('postfix:milter_protocol', False) %}
+milter_protocol = {{ pillar['postfix']['milter_protocol'] }}
 {%- endif %}
 {%- if salt['pillar.get']('postfix:non_smtpd_milters', False) %}
 non_smtpd_milters = {{ pillar['postfix']['non_smtpd_milters'] }}
