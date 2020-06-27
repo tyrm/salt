@@ -10,6 +10,7 @@ include:
   - profiles.software.dovecot.sieve
   - profiles.software.dovecot.solr
   - profiles.software.opendkim
+  - profiles.software.opendmarc
   - profiles.software.postfix
   - profiles.software.postfix.pgsql
   - profiles.software.postgresql
