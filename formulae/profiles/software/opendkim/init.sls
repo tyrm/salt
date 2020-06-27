@@ -77,7 +77,7 @@ opendkim:
 opendkim-genkey -s {{ conf.domainkey }} -d {{ key }}:
   cmd.run:
     - creates:
-      - /etc/opendkim/keys/{{ key }}/{{ conf.domainkey }}
+      - /etc/opendkim/keys/{{ key }}/{{ conf.domainkey }}.private
     - cwd: /etc/opendkim/keys/{{ key }}
     - runas: opendkim
     - require:
