@@ -1,6 +1,9 @@
 127.0.0.1
 localhost
-192.168.0.1/24
+
+{%- for conf in salt['pillar.get']('opendkim:networks', []]) %}
+{{ conf }}
+{%- endfor -%}
 
 {%- for key, conf in salt['pillar.get']('opendkim:domains', {}).items() %}
 *.{{ key }}

@@ -12,6 +12,9 @@ opendkim:
   domains:
     pup.haus:
       domainkey: 20200626
+  networks:
+    - 10.1.68.0/24
+    - 10.1.70.0/24
 
 postfix:
   mydestination: $myhostname, localhost.$mydomain, localhost, $mydomain, faery.pub
