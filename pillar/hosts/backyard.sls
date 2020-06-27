@@ -14,7 +14,6 @@ opendkim:
       domainkey: 20200626
 
 postfix:
-  mydestination: $myhostname, localhost.$mydomain, localhost, $mydomain, faery.pub
   mydomain: pup.haus
   myhostname: backyard.pup.haus
   smtpd_tls_cert_file: /etc/letsencrypt/live/pup.haus/fullchain.pem
