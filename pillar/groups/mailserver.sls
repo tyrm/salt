@@ -74,6 +74,7 @@ postfix:
   smtpd_tls_session_cache_database: "btree:${data_directory}/smtpd_scache"
   smtpd_tls_security_level: encrypt
   smtpd_use_tls: "yes"
+  virtual_alias_maps: "proxy:pgsql:/etc/postfix/pgsql-virtaliases.cf"
 
 rspamd:
   antivirus: >

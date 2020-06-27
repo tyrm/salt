@@ -780,3 +780,11 @@ milter_protocol = {{ pillar['postfix']['milter_protocol'] }}
 {%- if salt['pillar.get']('postfix:non_smtpd_milters', False) %}
 non_smtpd_milters = {{ pillar['postfix']['non_smtpd_milters'] }}
 {%- endif %}
+
+# VIRTUAL DOMAIN CONFIGURATION
+{%- if salt['pillar.get']('postfix:virtual_alias_domains', False) %}
+virtual_alias_domains = {{ pillar['postfix']['virtual_alias_domains'] }}
+{%- endif %}
+{%- if salt['pillar.get']('postfix:virtual_alias_maps', False) %}
+virtual_alias_maps = {{ pillar['postfix']['virtual_alias_maps'] }}
+{%- endif %}

@@ -18,6 +18,7 @@ postfix:
   myhostname: backyard.pup.haus
   smtpd_tls_cert_file: /etc/letsencrypt/live/pup.haus/fullchain.pem
   smtpd_tls_key_file: /etc/letsencrypt/live/pup.haus/privkey.pem
+  virtual_alias_domains: faery.pub
 
 postgresql:
   hba_extra_lines: |
