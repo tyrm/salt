@@ -44,7 +44,6 @@ postfix:
   mailbox_transport: "lmtp:unix:private/dovecot-lmtp"
   milter_default_action: accept
   milter_mail_macros: i {mail_addr} {client_addr} {client_name} {auth_authen} {auth_type}
-  milter_protocol: 2
   mydestination: $myhostname, localhost.$mydomain, localhost, $mydomain
   mynetworks: "127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128"
   myorigin: $mydomain
