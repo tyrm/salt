@@ -63,7 +63,7 @@ postfix:
       hosts: {{ dbhost }}
       user: {{ dbuser }}
       dbname: {{ dbname }}
-      query: SELECT b.username||'@'||b.domain as email FROM virtaliases v INNER JOIN mxboxes b ON v.mxbox_id = b.id WHERE v.alias = '%s';
+      query: SELECT b.username||'@'||b.domain as email FROM mxvirtaliases v INNER JOIN mxboxes b ON v.mxbox_id = b.id WHERE v.alias = '%s';
   smtp_tls_security_level: may
   smtp_tls_session_cache_database: "btree:${data_directory}/smtp_scache"
   smtpd_milters: "inet:127.0.0.1:11332, inet:localhost:12301"
