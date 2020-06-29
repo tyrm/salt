@@ -4,6 +4,10 @@ dovecot:
     protocol:
       hostname: backyard.pup.haus
       postmaster_address: postmaster@pup.haus
+  mail_plugins: $mail_plugins fts fts_solr
+  plugin:
+    fts: solr
+    fts_solr: url=http://localhost:8983/solr/mail/
   ssl:
     ssl_cert: /etc/letsencrypt/live/pup.haus/fullchain.pem
     ssl_key: /etc/letsencrypt/live/pup.haus/privkey.pem
