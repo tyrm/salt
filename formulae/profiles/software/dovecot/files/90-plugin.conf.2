@@ -1,0 +1,17 @@
+##
+## Plugin settings
+##
+
+# All wanted plugins must be listed in mail_plugins setting before any of the
+# settings take effect. See <doc/wiki/Plugins.txt> for list of plugins and
+# their configuration. Note that %variable expansion is done for all values.
+
+plugin {
+  #setting_name = value
+{% if salt['pillar.get']('dovecot:plugin:fts', False) -%}
+  fts = {{ pillar['dovecot']['plugin']['fts'] }}
+{%- endif %}
+{% if salt['pillar.get']('dovecot:plugin:fts_solr', False) -%}
+  fts_solr = {{ pillar['dovecot']['plugin']['fts_solr'] }}
+{%- endif %}
+}
