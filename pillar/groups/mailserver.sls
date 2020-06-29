@@ -19,6 +19,8 @@ dovecot:
           group: postfix
           mode: "0600"
           user: postfix
+  mail_gid: 500
+  mail_uid: 500
   sql:
     dbname: {{ dbname }}
     default_pass_scheme: SHA512

@@ -105,8 +105,16 @@ namespace inbox {
 # System user and group used to access mails. If you use multiple, userdb
 # can override these by returning uid or gid fields. You can use either numbers
 # or names. <doc/wiki/UserIds.txt>
+{% if salt['pillar.get']('dovecot:mail_uid', False) -%}
+mail_uid = {{ pillar['dovecot']['mail_uid'] }}
+{%- else -%}
 #mail_uid =
+{%- endif %}
+{% if salt['pillar.get']('dovecot:mail_gid', False) -%}
+mail_gid = {{ pillar['dovecot']['mail_gid'] }}
+{%- else -%}
 #mail_gid =
+{%- endif %}
 
 # Group to enable temporarily for privileged operations. Currently this is
 # used only with INBOX when either its initial creation or dotlocking fails.
