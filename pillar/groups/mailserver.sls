@@ -21,7 +21,7 @@ dovecot:
           user: postfix
   mail_gid: 500
   mail_uid: 500
-  pluigin:
+  plugin:
     antispam_backend: pipe
     antispam_spam: Junk
     antispam_trash: Trash
