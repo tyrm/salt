@@ -21,6 +21,14 @@ dovecot:
           user: postfix
   mail_gid: 500
   mail_uid: 500
+  pluigin:
+    antispam_backend: pipe
+    antispam_spam: Junk
+    antispam_trash: Trash
+    antispam_mail_sendmail: /usr/local/bin/rspamc
+    antispam_mail_spam: learn_spam
+    antispam_mail_notspam: learn_ham
+    antispam_mail_sendmail_args: "-h;localhost:11334;-P;q1"
   sql:
     dbname: {{ dbname }}
     default_pass_scheme: SHA512

@@ -8,10 +8,31 @@
 
 plugin {
   #setting_name = value
-{% if salt['pillar.get']('dovecot:plugin:fts', False) -%}
+  {% if salt['pillar.get']('dovecot:plugin:fts', False) -%}
   fts = {{ pillar['dovecot']['plugin']['fts'] }}
-{%- endif %}
-{% if salt['pillar.get']('dovecot:plugin:fts_solr', False) -%}
+  {%- endif %}
+  {% if salt['pillar.get']('dovecot:plugin:fts_solr', False) -%}
   fts_solr = {{ pillar['dovecot']['plugin']['fts_solr'] }}
-{%- endif %}
+  {%- endif %}
+  {% if salt['pillar.get']('dovecot:plugin:antispam_backend', False) -%}
+  antispam_backend = {{ pillar['dovecot']['plugin']['antispam_backend'] }}
+  {%- endif %}
+  {% if salt['pillar.get']('dovecot:plugin:antispam_spam', False) -%}
+  antispam_spam = {{ pillar['dovecot']['plugin']['antispam_spam'] }}
+  {%- endif %}
+  {% if salt['pillar.get']('dovecot:plugin:antispam_trash', False) -%}
+  antispam_trash = {{ pillar['dovecot']['plugin']['antispam_trash'] }}
+  {%- endif %}
+  {% if salt['pillar.get']('dovecot:plugin:antispam_mail_sendmail', False) -%}
+  antispam_mail_sendmail = {{ pillar['dovecot']['plugin']['antispam_mail_sendmail'] }}
+  {%- endif %}
+  {% if salt['pillar.get']('dovecot:plugin:antispam_mail_spam', False) -%}
+  antispam_mail_spam = {{ pillar['dovecot']['plugin']['antispam_mail_spam'] }}
+  {%- endif %}
+  {% if salt['pillar.get']('dovecot:plugin:antispam_mail_notspam', False) -%}
+  antispam_mail_notspam = {{ pillar['dovecot']['plugin']['antispam_mail_notspam'] }}
+  {%- endif %}
+  {% if salt['pillar.get']('dovecot:plugin:antispam_mail_sendmail_args', False) -%}
+  antispam_mail_sendmail_args = {{ pillar['dovecot']['plugin']['antispam_mail_sendmail_args'] }}
+  {%- endif %}
 }
