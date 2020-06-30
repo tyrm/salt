@@ -14,6 +14,8 @@ dovecot:
 
 opendkim:
   domains:
+    faery.pub:
+      domainkey: 20200629
     pup.haus:
       domainkey: 20200626
 
