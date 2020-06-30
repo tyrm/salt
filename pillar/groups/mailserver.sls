@@ -29,6 +29,12 @@ dovecot:
     antispam_mail_spam: learn_spam
     antispam_mail_notspam: learn_ham
     antispam_mail_sendmail_args: "-h;localhost:11334;-P;q1"
+  sieve:
+    sieve_before: /usr/local/etc/dovecot/sieve/before.d
+    sieve_extensions: +spamtest +spamtestplus
+    sieve_spamtest_status_type: score
+    sieve_spamtest_status_header: "X-Spamd-Result: default: [[:alnum:]]+ \\[(-?[[:digit:]]+\\.[[:digit:]]+) / -?[[:digit:]]+\\.[[:digit:]]+\\]"
+    sieve_spamtest_max_header: "X-Spamd-Result: default: [[:alnum:]]+ \\[-?[[:digit:]]+\\.[[:digit:]]+ / (-?[[:digit:]]+\\.[[:digit:]]+)\\]"
   sql:
     dbname: {{ dbname }}
     default_pass_scheme: SHA512
