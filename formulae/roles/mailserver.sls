@@ -3,6 +3,7 @@ include:
   - profiles.postgresql.mailserver
   - profiles.software.clamav
   - profiles.software.dovecot
+  - profiles.software.dovecot.antispam
   - profiles.software.dovecot.imapd
   - profiles.software.dovecot.lmtpd
   - profiles.software.dovecot.managesieved
