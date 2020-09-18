@@ -4,10 +4,6 @@ dovecot:
     protocol:
       hostname: util1.ptzo.gdn
       postmaster_address: postmaster@pettingzoo.co
-  mail_plugins: $mail_plugins fts fts_solr
-  plugin:
-    fts: solr
-    fts_solr: url=http://localhost:8983/solr/mail/
   ssl:
     ssl_cert: /etc/letsencrypt/live/util1.ptzo.gdn/fullchain.pem
     ssl_key: /etc/letsencrypt/live/util1.ptzo.gdn/privkey.pem
@@ -27,7 +23,7 @@ postfix:
   myhostname: util1.ptzo.gdn
   smtpd_tls_cert_file: /etc/letsencrypt/live/util1.ptzo.gdn/fullchain.pem
   smtpd_tls_key_file: /etc/letsencrypt/live/util1.ptzo.gdn/privkey.pem
-  virtual_alias_domains: faery.pub pup.haus
+  virtual_alias_domains: faery.pub ptzo.gdn
 
 postgresql:
   hba_extra_lines: |
