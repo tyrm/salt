@@ -1,7 +1,7 @@
 ---
 base:
   '*':
-    - users.tyr
+    - profiles.users.tyr
 
   'backyard.pup.haus':
     - roles.mailserver
