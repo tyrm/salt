@@ -5,4 +5,4 @@ tyr:
     - groups: {{ groups_list }}
     - require:
       - group: tyr
-  group.present
+  group.present:
