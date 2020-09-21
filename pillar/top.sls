@@ -7,3 +7,6 @@ base:
   'util1.ptzo.gdn':
     - groups.mailserver
     - hosts.util1
+
+  'uwu.krazy.party':
+    - hosts.uwu
