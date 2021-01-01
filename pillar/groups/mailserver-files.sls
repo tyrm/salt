@@ -1,7 +1,4 @@
 ---
-{% set dbhost = 'localhost '%}
-{% set dbname = 'mail '%}
-{% set dbuser = 'mail '%}
 dovecot:
   auth:
     auth_mechanisms: plain login

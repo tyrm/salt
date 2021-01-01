@@ -24,6 +24,13 @@ postfix:
   smtpd_tls_cert_file: /etc/letsencrypt/live/himbo.hive.gay/fullchain.pem
   smtpd_tls_key_file: /etc/letsencrypt/live/himbo.hive.gay/privkey.pem
 
+postgresql:
+  hba_extra_lines: |
+      host all all all md5
+  listen_addresses: '*'
+  ssl_cert_file: /etc/postgresql/12/main/server.crt
+  ssl_key_file: /etc/postgresql/12/main/server.key
+
 users:
   tyr:
     groups:
