@@ -4,7 +4,7 @@ base:
     - groups.mailserver
     - hosts.backyard
 
-  'himbo.hive.gateway':
+  'himbo.hive.gay':
     - groups.mailserver-files
     - hosts.himbo
 
