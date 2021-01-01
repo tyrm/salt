@@ -16,18 +16,6 @@ openssl dhparam -out /etc/dovecot/dh.pem 4096:
     - watch_in:
       - service: dovecot
 
-/etc/dovecot/dovecot-sql.conf.ext:
-  file.managed:
-    - group: dovecot
-    - mode: 640
-    - source: salt://profiles/software/dovecot/files/dovecot-sql.conf.ext.j2
-    - template: jinja
-    - user: root
-    - require:
-      - pkg: dovecot
-    - watch_in:
-      - service: dovecot
-
 {% set confs = ['10-auth.conf', '10-mail.conf', '10-master.conf', '10-ssl.conf', '90-plugin.conf'] %}
 {% for conf in confs %}
 /etc/dovecot/conf.d/{{ conf }}:
