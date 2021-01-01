@@ -4,10 +4,6 @@ base:
     - groups.mailserver
     - hosts.backyard
 
-  'himbo.hive.gay':
-    - groups.mailserver-files
-    - hosts.himbo
-
   'util1.ptzo.gdn':
     - groups.mailserver
     - hosts.util1
