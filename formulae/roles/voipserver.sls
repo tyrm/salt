@@ -1,0 +1,3 @@
+---
+include:
+  - profiles.software.asterisk
