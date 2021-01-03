@@ -8,7 +8,7 @@ asterisk:
     - watch:
       - pkg: asterisk
 
-{% set confs = ['sip.conf'] %}
+{% set confs = ['pjsip.conf', 'sip.conf'] %}
 {% for conf in confs %}
 /etc/asterisk/{{ conf }}:
   file.managed:

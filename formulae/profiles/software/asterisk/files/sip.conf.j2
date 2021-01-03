@@ -8,7 +8,7 @@ context=from-internal
 disallow=all
 allow=ulaw
 
-{% for key, conf in salt['pillar.get']('asterisk:users', {}).items() %}
+{%- for key, conf in salt['pillar.get']('asterisk:users', {}).items() %}
 [{{conf['user']}}](friends_internal)
 secret={{conf['pass']}}
-{% endfor %}
+{% endfor -%}
