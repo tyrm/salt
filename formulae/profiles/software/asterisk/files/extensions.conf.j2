@@ -4,3 +4,6 @@ exten=>{{ext}},1,Dial(SIP/{{conf['user']}},20)
 exten=>{{ext}},n,VoiceMail({{ext}}@default,u)
 
 {% endfor %}
+; voicemail
+exten => 7777,1,Answer(500)
+exten => 7777,n,VoiceMailMain(@default)
