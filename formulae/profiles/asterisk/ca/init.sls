@@ -1,5 +1,5 @@
 ---
-// Scripts to help Drew
+# CA Scripts
 /var/lib/asterisk/ca-scripts:
   file.directory:
     - user: asterisk
@@ -8,7 +8,7 @@
     - require:
       - pkg: asterisk
 
-{% set scripts = ['certs', 'crl', 'newcerts'] %}
+{% set scripts = ['gen_root_cert.sh', 'gen_root_key.sh'] %}
 {% for script in scripts %}
 /var/lib/asterisk/ca-scripts/{{script}}:
   file.managed:
@@ -20,7 +20,7 @@
       - file: /var/lib/asterisk/ca-scripts
 {% endfor %}
 
-// CA Infrastructure
+# CA Infrastructure
 /etc/asterisk/ca:
     file.directory:
       - group: asterisk
