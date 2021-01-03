@@ -51,6 +51,14 @@
         - file: /etc/asterisk/ca
 {% endfor %}
 
+/etc/asterisk/ca/keys:
+    file.directory:
+      - group: asterisk
+      - user: asterisk
+      - mode: 700
+      - require:
+        - file: /etc/asterisk/ca
+
 /etc/asterisk/ca/private:
     file.directory:
       - group: asterisk

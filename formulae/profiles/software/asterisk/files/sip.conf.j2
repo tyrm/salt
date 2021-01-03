@@ -1,13 +1,20 @@
 [general]
 transport=udp
 
+tlsenable=yes
+tlsbindaddr=0.0.0.0
+tlscertfile=/etc/asterisk/keys/asterisk.pem
+tlscafile=/etc/asterisk/keys/ca.crt
+
 [friends_internal](!)
 type=friend
 host=dynamic
 context=from-internal
 disallow=all
 allow=ulaw
-{% for key, conf in salt['pillar.get']('asterisk:users', {}).items() %}
+transport=tls
+
+{% for key, conf in salt['pillar.get']('asterisk:users', {}).items() -%}
 [{{conf['user']}}](friends_internal)
 secret={{conf['pass']}}
 {% endfor %}

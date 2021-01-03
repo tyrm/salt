@@ -19,3 +19,9 @@ openssl ca -config confs/$NAME.cnf \
 
 chmod 444 $FILE
 chown asterisk:asterisk $FILE
+
+cat $FILE > keys/server.pem
+cat private/$NAME.key.pem >> keys/server.pem
+
+chmod 400 keys/server.pem
+chown asterisk:asterisk keys/server.pem
