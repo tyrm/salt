@@ -7,3 +7,18 @@ asterisk:
     - enable: True
     - watch:
       - pkg: asterisk
+
+{% set confs = ['sip.conf'] %}
+{% for conf in confs %}
+/etc/dovecot/conf.d/{{ conf }}:
+  file.managed:
+    - group: asterisk
+    - mode: 644
+    - source: salt://profiles/software/asterisk/files/{{ conf }}.j2
+    - template: jinja
+    - user: asterisk
+    - require:
+      - pkg: asterisk
+    - watch_in:
+      - service: asterisk
+{% endfor %}
