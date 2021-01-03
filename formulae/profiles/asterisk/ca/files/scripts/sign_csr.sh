@@ -4,6 +4,8 @@ set -e
 
 NAME=$1
 
+cd /etc/asterisk/ca
+
 openssl ca -config confs/$NAME.cnf \
       -extensions server_cert -days 375 -notext -md sha256 \
       -in csr/$NAME.csr.pem \
