@@ -8,7 +8,7 @@
     - require:
       - pkg: asterisk
 
-{% set scripts = ['gen_root_cert.sh', 'gen_root_key.sh'] %}
+{% set scripts = ['gen_root_cert.sh', 'gen_root_key.sh', 'show_root_cert.sh'] %}
 {% for script in scripts %}
 /var/lib/asterisk/ca-scripts/{{script}}:
   file.managed:
