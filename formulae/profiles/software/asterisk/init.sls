@@ -10,7 +10,7 @@ asterisk:
 
 {% set confs = ['sip.conf'] %}
 {% for conf in confs %}
-/etc/dovecot/conf.d/{{ conf }}:
+/etc/asterisk/{{ conf }}:
   file.managed:
     - group: asterisk
     - mode: 644
