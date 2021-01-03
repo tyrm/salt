@@ -21,3 +21,10 @@ tyr sshkey orthrus:
     - enc: ssh-ed25519
     - comment: tyr@Orthrus
     - name: AAAAC3NzaC1lZDI1NTE5AAAAIFuDWtFaKvDW1xsWJ8q9/Zc7xCDTaUqb9EJRD8NOD4vP
+
+tyr sshkey raiju:
+  ssh_auth.present:
+    - user: tyr
+    - enc: ssh-ed25519
+    - comment: tyr@Raiju.local
+    - name: AAAAC3NzaC1lZDI1NTE5AAAAICHFvutFvt8UMrFtUDVdeUCJ5PzF83VVUHRPkXuDSqCk

@@ -1,4 +1,26 @@
 ---
+// Scripts to help Drew
+/var/lib/asterisk/ca-scripts:
+  file.directory:
+    - user: asterisk
+    - group: asterisk
+    - dir_mode: 750
+    - require:
+      - pkg: asterisk
+
+{% set scripts = ['certs', 'crl', 'newcerts'] %}
+{% for script in scripts %}
+/var/lib/asterisk/ca-scripts/{{script}}:
+  file.managed:
+    - group: asterisk
+    - mode: 750
+    - source: salt://profiles/asterisk/ca/files/scripts/{{script}}
+    - user: asterisk
+    - require:
+      - file: /var/lib/asterisk/ca-scripts
+{% endfor %}
+
+// CA Infrastructure
 /etc/asterisk/ca:
     file.directory:
       - group: asterisk
@@ -47,3 +69,12 @@ echo 1000 > /etc/asterisk/ca/serial:
       - mode: 640
       - require:
         - cmd: echo 1000 > /etc/asterisk/ca/serial
+
+/etc/asterisk/ca/openssl.cnf:
+  file.managed:
+    - group: asterisk
+    - mode: 644
+    - source: salt://profiles/asterisk/ca/files/ca-openssl.cnf
+    - user: asterisk
+    - require:
+      - file: /etc/asterisk/ca
