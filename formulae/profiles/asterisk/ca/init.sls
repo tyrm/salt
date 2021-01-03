@@ -109,7 +109,7 @@ echo 1000 > /etc/asterisk/ca/serial:
     - template: jinja
     - user: asterisk
     - defaults:
-        conf: conf
+        common_name: conf['user']
     - require:
       - file: /etc/asterisk/ca/confs
 {%- endfor %}

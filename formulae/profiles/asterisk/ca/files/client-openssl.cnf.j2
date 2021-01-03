@@ -82,7 +82,7 @@ stateOrProvinceName_default     =
 localityName_default            =
 0.organizationName_default      = {{ pillar['asterisk']['ca']['organization'] }}
 organizationalUnitName_default  = {{ pillar['asterisk']['ca']['organization'] }} VoIP
-commonName_default              = {{ conf['user'] }}
+commonName_default              = {{ common_name }}
 emailAddress_default            =
 
 [ v3_ca ]
