@@ -1,4 +1,4 @@
-# OpenSSL server configuration file.
+# OpenSSL client configuration file.
 
 [ ca ]
 # `man ca`
@@ -6,7 +6,7 @@ default_ca = CA_default
 
 [ CA_default ]
 # Directory and file locations.
-dir               = /etc/asterisk/ca
+dir               = /root/ca/client
 certs             = $dir/certs
 crl_dir           = $dir/crl
 new_certs_dir     = $dir/newcerts
@@ -15,12 +15,12 @@ serial            = $dir/serial
 RANDFILE          = $dir/private/.rand
 
 # The root key and root certificate.
-private_key       = $dir/private/ca.key.pem
-certificate       = $dir/certs/ca.cert.pem
+private_key       = $dir/private/client.key.pem
+certificate       = $dir/certs/client.cert.pem
 
 # For certificate revocation lists.
 crlnumber         = $dir/crlnumber
-crl               = $dir/crl/ca.crl.pem
+crl               = $dir/crl/client.crl.pem
 crl_extensions    = crl_ext
 default_crl_days  = 30
 
@@ -56,7 +56,7 @@ emailAddress            = optional
 
 [ req ]
 # Options for the `req` tool (`man req`).
-default_bits        = 4096
+default_bits        = 2048
 distinguished_name  = req_distinguished_name
 string_mask         = utf8only
 
@@ -77,12 +77,12 @@ commonName                      = Common Name
 emailAddress                    = Email Address
 
 # Optionally, specify some defaults.
-countryName_default             = {{ pillar['asterisk']['ca']['country'] }}
-stateOrProvinceName_default     = {{ pillar['asterisk']['ca']['state'] }}
-localityName_default            = {{ pillar['asterisk']['ca']['locality'] }}
+countryName_default             =
+stateOrProvinceName_default     =
+localityName_default            =
 0.organizationName_default      = {{ pillar['asterisk']['ca']['organization'] }}
 organizationalUnitName_default  = {{ pillar['asterisk']['ca']['organization'] }} VoIP
-commonName_default              = {{ pillar['asterisk']['ca']['server_common'] }}
+commonName_default              = {{ conf['user'] }}
 emailAddress_default            =
 
 [ v3_ca ]
@@ -108,6 +108,7 @@ subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid,issuer
 keyUsage = critical, nonRepudiation, digitalSignature, keyEncipherment
 extendedKeyUsage = clientAuth, emailProtection
+crlDistributionPoints = URI:http://ssl.ptzo.gdn/client.crl.pem
 
 [ server_cert ]
 # Extensions for server certificates (`man x509v3_config`).
@@ -118,7 +119,6 @@ subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid,issuer:always
 keyUsage = critical, digitalSignature, keyEncipherment
 extendedKeyUsage = serverAuth
-subjectAltName = @alt_names
 
 [ crl_ext ]
 # Extension for CRLs (`man x509v3_config`).
@@ -131,6 +131,3 @@ subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid,issuer
 keyUsage = critical, digitalSignature
 extendedKeyUsage = critical, OCSPSigning
-
-[alt_names]
-DNS.1   = {{ pillar['asterisk']['ca']['server_common'] }}
