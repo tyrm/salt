@@ -1,4 +1,4 @@
 [from-internal]
 {% for ext, conf in salt['pillar.get']('asterisk:users', {}).items() %}
 exten=>{{ext}},1,Dial(SIP/{{conf['user']}},20)
-{% endfor %}
+{%- endfor %}
