@@ -13,7 +13,7 @@ if test -f "$FILE"; then
 fi
 
 openssl ca -config confs/$NAME.cnf \
-      -extensions server_cert -days 375 -notext -md sha256 \
+      -extensions server_cert -days 3650 -notext -md sha256 \
       -in csr/$NAME.csr.pem \
       -out $FILE
 
