@@ -108,6 +108,8 @@ echo 1000 > /etc/asterisk/ca/serial:
     - source: salt://profiles/asterisk/ca/files/client-openssl.cnf.j2
     - template: jinja
     - user: asterisk
+    - defaults:
+      conf: conf
     - require:
       - file: /etc/asterisk/ca/confs
 {%- endfor %}
