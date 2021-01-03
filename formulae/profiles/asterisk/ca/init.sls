@@ -29,7 +29,7 @@
       - require:
         - pkg: asterisk
 
-{% set folders = ['certs', 'confs', 'crl', 'newcerts'] %}
+{% set folders = ['certs', 'confs', 'csr', 'newcerts'] %}
 {% for folder in folders %}
 /etc/asterisk/ca/{{folder}}:
     file.directory:
