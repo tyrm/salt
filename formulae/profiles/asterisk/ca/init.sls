@@ -98,3 +98,16 @@ echo 1000 > /etc/asterisk/ca/serial:
     - user: asterisk
     - require:
       - file: /etc/asterisk/ca/confs
+
+# Client certs
+{% for ext, conf in salt['pillar.get']('asterisk:users', {}).items() %}
+/etc/asterisk/ca/confs/{{conf['user']}}.cnf:
+  file.managed:
+    - group: asterisk
+    - mode: 644
+    - source: salt://profiles/asterisk/ca/files/client-openssl.cnf.j2
+    - template: jinja
+    - user: asterisk
+    - require:
+      - file: /etc/asterisk/ca/confs
+{%- endfor %}
