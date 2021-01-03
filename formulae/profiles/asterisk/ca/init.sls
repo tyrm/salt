@@ -9,13 +9,16 @@
       - pkg: asterisk
 
 {% set scripts = [
-  'gen_csr.sh',
-  'gen_key.sh',
+  'gen_client_csr.sh',
+  'gen_client_key.sh',
   'gen_root_cert.sh',
   'gen_root_key.sh',
+  'gen_server_csr.sh',
+  'gen_server_key.sh',
   'show_cert.sh',
   'show_root_cert.sh',
-  'sign_csr.sh'
+  'sign_client_csr.sh',
+  'sign_server_csr.sh'
 ] %}
 {% for script in scripts %}
 /var/lib/asterisk/ca-scripts/{{script}}:
