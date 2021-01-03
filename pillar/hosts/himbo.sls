@@ -5,6 +5,7 @@ asterisk:
     state: California
     locality: The Gay Area
     organization: The Hive
+    server_common: sip.hive.gay
 
 dovecot:
   lmtpd:

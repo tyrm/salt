@@ -8,7 +8,7 @@
     - require:
       - pkg: asterisk
 
-{% set scripts = ['gen_root_cert.sh', 'gen_root_key.sh', 'show_root_cert.sh'] %}
+{% set scripts = ['gen_root_cert.sh', 'gen_root_key.sh', 'gen_server_csr.sh', 'gen_server_key.sh','show_root_cert.sh'] %}
 {% for script in scripts %}
 /var/lib/asterisk/ca-scripts/{{script}}:
   file.managed:
@@ -29,7 +29,7 @@
       - require:
         - pkg: asterisk
 
-{% set folders = ['certs', 'crl', 'newcerts'] %}
+{% set folders = ['certs', 'confs', 'crl', 'newcerts'] %}
 {% for folder in folders %}
 /etc/asterisk/ca/{{folder}}:
     file.directory:
@@ -79,3 +79,14 @@ echo 1000 > /etc/asterisk/ca/serial:
     - user: asterisk
     - require:
       - file: /etc/asterisk/ca
+
+# Server cert
+/etc/asterisk/ca/confs/server.cnf:
+  file.managed:
+    - group: asterisk
+    - mode: 644
+    - source: salt://profiles/asterisk/ca/files/server-openssl.cnf.j2
+    - template: jinja
+    - user: asterisk
+    - require:
+      - file: /etc/asterisk/ca/confs
