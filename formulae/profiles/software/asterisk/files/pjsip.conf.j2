@@ -20,8 +20,7 @@ type=aor
 max_contacts=1
 
 ;Definitions for our phones, using the templates above
-
-{%- for key, conf in salt['pillar.get']('asterisk:users', {}).items() %}
+{% for key, conf in salt['pillar.get']('asterisk:users', {}).items() %}
 [{{conf['user']}}](endpoint_internal)
 auth={{conf['user']}}
 aors={{conf['user']}}
@@ -29,4 +28,4 @@ aors={{conf['user']}}
 password={{conf['pass']}}
 username={{conf['user']}}
 [{{conf['user']}}](aor_dynamic)
-{% endfor -%}
+{% endfor %}
