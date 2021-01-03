@@ -74,7 +74,8 @@ echo 1000 > /etc/asterisk/ca/serial:
   file.managed:
     - group: asterisk
     - mode: 644
-    - source: salt://profiles/asterisk/ca/files/ca-openssl.cnf
+    - source: salt://profiles/asterisk/ca/files/ca-openssl.cnf.j2
+    - template: jinja
     - user: asterisk
     - require:
       - file: /etc/asterisk/ca

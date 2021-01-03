@@ -1,4 +1,11 @@
 ---
+asterisk:
+  ca:
+    country: US
+    state: California
+    locality: The Gay Area
+    organization: The Hive
+
 dovecot:
   lmtpd:
     protocol:

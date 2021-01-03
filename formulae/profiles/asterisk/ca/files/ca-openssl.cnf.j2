@@ -78,11 +78,12 @@ commonName                      = Common Name
 emailAddress                    = Email Address
 
 # Optionally, specify some defaults.
-countryName_default             = US
-stateOrProvinceName_default     = California
-localityName_default            = San Francisco
-0.organizationName_default      = The Hive
-organizationalUnitName_default  =
+countryName_default             = {{ pillar['asterisk']['ca']['country'] }}
+stateOrProvinceName_default     = {{ pillar['asterisk']['ca']['state'] }}
+localityName_default            = {{ pillar['asterisk']['ca']['locality'] }}
+0.organizationName_default      = {{ pillar['asterisk']['ca']['organization'] }}
+organizationalUnitName_default  = {{ pillar['asterisk']['ca']['organization'] }} VoIP Certificate Authority
+commonName_default              = {{ pillar['asterisk']['ca']['organization'] }} Root CA
 emailAddress_default            =
 
 [ v3_ca ]
