@@ -1,6 +1,14 @@
 [general]
 transport=udp
 
+allowguest=no
+udpbindaddr=0.0.0.0:5061
+disallowed_methods=UPDATE
+srvlookup=yes
+dtmfmode=rfc2833
+session-timers=refuse
+register=1777MYCCID:SUPERSECRET@callcentric.com
+
 tlsenable=yes
 tlsbindaddr=0.0.0.0
 tlscertfile=/etc/asterisk/ca/keys/server.pem
