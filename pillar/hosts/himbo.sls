@@ -17,8 +17,8 @@ dovecot:
     fts: solr
     fts_solr: url=http://localhost:8983/solr/mail/
   ssl:
-    ssl_cert: /etc/letsencrypt/live/himbo.hive.gay/fullchain.pem
-    ssl_key: /etc/letsencrypt/live/himbo.hive.gay/privkey.pem
+    ssl_cert: /etc/letsencrypt/live/hive.gay/fullchain.pem
+    ssl_key: /etc/letsencrypt/live/hive.gay/privkey.pem
 
 opendkim:
   domains:
@@ -29,8 +29,8 @@ postfix:
   mydestination: $myhostname, localhost.$mydomain, localhost, $mydomain
   mydomain: hive.gay
   myhostname: himbo.hive.gay
-  smtpd_tls_cert_file: /etc/letsencrypt/live/himbo.hive.gay/fullchain.pem
-  smtpd_tls_key_file: /etc/letsencrypt/live/himbo.hive.gay/privkey.pem
+  smtpd_tls_cert_file: /etc/letsencrypt/live/hive.gay/fullchain.pem
+  smtpd_tls_key_file: /etc/letsencrypt/live/hive.gay/privkey.pem
 
 postgresql:
   hba_extra_lines: |
